@@ -1,0 +1,84 @@
+.issues-list-header{
+    background-color: #f6f8fa;
+    border: 1px solid #e1e4e8;
+    border-radius: 3px 3px 0 0;
+}
+
+.issues-list-header-links{
+    padding-top:13px;
+    padding-bottom: 13px;
+    display: inline-block;
+    color:#586069;
+}
+
+.issues-list-header-links:first-child{
+    margin-left: 15px;
+}
+
+.issues-list-header-links.selected{
+    color: #24292e;
+    font-weight: 600;
+}
+
+.issues-list-container{
+    border:1px #e1e4e8 solid;
+    border-top:0;
+}
+.issue-status{
+    max-width: 60px;
+}
+.icon-holder{
+    padding-top: 8px;
+    padding-left: 15px;
+    display: inline-block;
+}
+.open-issue-icon{
+    fill: #28a745
+}
+.closed-issue-icon{
+    fill: #cb2431;
+}
+
+
+.issue-description{
+    padding-top:8px;
+    padding-bottom: 8px;
+}
+.issue-text{
+    display: inline-block;
+    color:#24292e;
+    font-size:16px;
+}
+
+.issue-text:hover{
+    color:#0366d6;
+}
+.small-text{
+    margin-top: 4px;
+    color:#586069;
+}
+
+/*No issue state styling*/
+
+.empty-state{
+    position: relative;
+    padding: 80px 40px;
+    text-align: center;
+    background-color: #fafbfc;
+    border: 1px solid #e1e4e8;
+    border-radius: 3px;
+    box-shadow: inset 0 0 10px rgba(27,31,35,0.05)
+}
+
+.empty-state-icon{
+    margin-bottom: 8px;
+}
+.empty-state-heading{
+    font-weight: 600;
+    margin:16px 0;
+}
+
+
+.empty-state-text a{
+    cursor: pointer;
+}

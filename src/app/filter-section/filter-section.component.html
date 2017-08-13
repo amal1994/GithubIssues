@@ -1,0 +1,55 @@
+<!--Contains the filter filter-section-->
+
+<div class="container">
+  <div class="row filter-section">
+    <div class="col-sm-12">
+      <div class="row">
+        <div class="col-sm-9">
+          <div class="row">
+            <div class="col-sm-7">
+              <div class="input-group">
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filters <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                  </ul>
+                </div><!-- /btn-group -->
+                <div class="search-issues">
+                  <svg aria-hidden="true" class="search-icon" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0 0 13 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 0 0 0-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"></path></svg>
+                  <input #filter placeholder="Enter Keyword and press enter"
+                  (change)="filterValue(filter.value)" type="text" 
+                  class="form-control" aria-label="...">
+                  
+                </div>
+                
+              </div><!-- /input-group -->
+            </div>
+            <div class="col-sm-5">
+              <ul class="nav-links">
+                <li class="nav-links-item">
+                  <a [routerLink]="['']">
+                    Labels
+                  </a>
+                </li>
+                <li class="nav-links-item">
+                  <a [routerLink]="['']">
+                    Milestones
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3 text-right">
+          <a [routerLink]="['/new-issue']" class="btn btn-primary">New Issue</a>
+        </div>
+      </div>
+      
+    </div><!-- /.col-sm-12-->
+  
+  </div>
+</div>

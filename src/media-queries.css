@@ -1,0 +1,21 @@
+@media screen and (max-width:767px) {
+   .navbar-right{
+       float: right;
+       margin: 0;
+   }
+   .navbar-nav .open .dropdown-menu{
+       position: absolute;
+       right:0;
+       left:auto;
+       background: #fff;
+       border:1px solid #ccc;
+       box-shadow: 0 6px 12px rgba(0,0,0,.175);
+   }
+   .repo-action-buttons{
+       display: none;
+   }
+   .nav-links{
+       margin-top: 10px;
+   }
+
+}

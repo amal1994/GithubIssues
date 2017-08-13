@@ -1,0 +1,56 @@
+.issuer-avatar{
+    display: inline-block;
+}
+
+.create-issue-container{
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #d1d5da;
+    border-radius: 3px;
+}
+
+.create-issue-container:before{
+    position: absolute;
+    top: 11px;
+    right: 100%;
+    left: -16px;
+    display: block;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    content: " ";
+    border-color: transparent;
+    border-style: solid solid outset;
+    border-width: 8px;
+    border-right-color: #d1d5da;
+}
+
+.create-issue-container:after{
+    position: absolute;
+    top: 11px;
+    right: 100%;
+    left: -16px;
+    display: block;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    content: " ";
+    border-color: transparent;
+    border-style: solid solid outset;
+    border-width: 8px;
+    border-right-color: #d1d5da;
+}
+
+.create-issue-container::after{
+    margin-top: 1px;
+    margin-left: 2px;
+    border-width: 7px;
+    border-right-color: #fff;
+}
+
+.issue-title{
+    position: relative;
+    padding: 10px;
+    padding-bottom: 0;
+    word-wrap: break-word;
+}

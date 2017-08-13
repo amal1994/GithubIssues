@@ -1,0 +1,181 @@
+
+
+.show-issue-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.show-issue-title{
+    font-size: 32px;
+}
+.issue-title{
+    font-weight: normal;
+}
+.avatar-holder{
+    max-width: 85px;
+}
+.issuer-avatar{
+    display: inline-block;
+}
+
+.issue-number{
+    font-weight: 300;
+    color: #a3aab1;
+    letter-spacing: -1px;
+}
+.issue-meta-data{
+    border-bottom:  1px solid #e6ebf1;
+    padding-bottom: 20px;
+    margin-top: 9px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.issue-meta-data-info{
+    color: #586069;
+}
+
+.issue-meta-data .issue-status{
+    margin-right: 8px;
+}
+
+.issue-meta-data .author{
+    font-weight: 600;
+    color: #586069;
+}
+
+.issue-status{
+    font-size: 14px;
+}
+
+.issue-timeline-comment{
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #d1d5da;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+.issue-timeline-comment:before,.issue-timeline-comment:after{
+    position: absolute;
+    top: 11px;
+    right: 100%;
+    left: -16px;
+    display: block;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    content: " ";
+    border-color: transparent;
+    border-style: solid solid outset;
+}
+
+.issue-timeline-comment:before{
+    border-width: 8px;
+    border-right-color: #d1d5da;
+}
+.issue-timeline-comment:after{
+    margin-top: 1px;
+    margin-left: 2px;
+    border-width: 7px;
+    border-right-color: #f6f8fa;
+}
+
+.issue-timeline-comment-header{
+    padding: 10px 15px;
+    color: #586069;
+    background-color: #f6f8fa;
+    border-bottom: 1px solid #d1d5da;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+
+}
+
+.issue-timeline-comment-header-text{
+    font-size:14px;
+}
+
+.issue-timeline-comment-text{
+    padding: 15px;
+    min-height: 200px;
+}
+
+/*Issues sidebar css*/
+
+.issue-sidebar-list-item{
+    padding: 10px 0;
+    border-bottom: 1px solid #e6ebf1;
+}
+.issue-sidebar-list-item-heading{
+    margin-bottom: 10px;
+    font-size: 12px;
+    line-height: 16px;
+    color: #586069;
+    font-weight: 600;
+}
+
+.issue-sidebar-list-item-text{
+    font-size: 12px;
+    color: #586069;
+}
+
+/* comment form */
+.new-comment-form{
+    border-top: 2px solid #e6ebf1;
+    padding-top: 15px;
+    margin-top:15px;
+    background: #fff;
+}
+
+
+.issue-comment{
+    padding: 8px 8px 0 8px;
+}
+
+.discuss-issues-container:before{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 94px;
+    z-index: -1;
+    display: block;
+    width: 2px;
+    content: "";
+    background-color: #e6ebf1;
+}
+
+.comment-logs-item{
+    position: relative;
+    margin: 15px 0 15px 79px;
+    display: flex;
+}
+.comment-logs-icon{
+    width: 32px;
+    height: 32px;
+    margin-top: -7px;
+    margin-left: -16px;
+    margin-right: 5px;
+    line-height: 28px;
+    color: #586069;
+    text-align: center;
+    background-color: #e6ebf1;
+    border: 2px solid #fff;
+    border-radius: 50%;
+}
+
+.comment-logs-icon.closed{
+    fill: #fff;
+    background-color: #cb2431
+}
+
+.comment-logs-icon.open{
+    fill: #fff;
+    background-color: #2cbe4e;
+}
+.comment-log-author{
+    font-weight: 600;
+    color: #586069;
+}

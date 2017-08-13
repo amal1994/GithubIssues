@@ -1,0 +1,79 @@
+<!--Container of the list of issues-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div *ngIf="listOfIssues.length ===0" class="empty-state">
+        <svg aria-hidden="true" class="empty-state-icon grey-icon" height="40" version="1.1" viewBox="0 0 14 16" width="35"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+        <h3 class="fs-20 empty-state-heading">Welcome To Issues!</h3>
+        <p class="empty-state-text fs-16">
+          Issues are used to track todos, bugs, feature requests, and more. As issues are created, they’ll appear here in a searchable and filterable list. To get started, you should
+          <a routerLink="/new-issue">create an issue</a> 
+        </p>
+      </div>
+      <div *ngIf="listOfIssues.length > 0" class="issues-container">
+        <div class="issues-list-header">
+          <div class="row">
+             <div class="col-sm-4">
+                <div class="row">
+                  <div class="col-md-4 col-sm-6 noPadRight">
+                    <a href="" class="issues-list-header-links selected">
+                      <svg aria-hidden="true" class="octicon octicon-issue-opened" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+                      {{listOfOpenIssues}} Open
+                    </a>
+                  </div>
+                  <div class="col-md-4 col-sm-6 noPadLeft">
+                    <a *ngIf="listOfClosedIssues>0" href="" class="issues-list-header-links">
+                      <svg aria-hidden="true" class="octicon octicon-check" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5z"></path></svg>
+                      {{listOfClosedIssues}} Closed
+                    </a>
+                    
+        
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-8">
+                
+              </div>
+            </div>
+         
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="issues-list-container">
+              <ul class="issues-list">
+                
+                <li *ngFor = "let issue of issues | filter:filterValue"  class="issues-list-item">
+                  
+                  <div class="row">
+                    <div class="col-sm-1 col-xs-2 issue-status noPadRight">
+                      <span class="icon-holder">
+                        <svg *ngIf="issue.status==='open'" aria-hidden="true" class="open-issue-icon" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+                        <svg *ngIf="issue.status==='closed'" aria-hidden="true" class="closed-issue-icon" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M7 10h2v2H7v-2zm2-6H7v5h2V4zm1.5 1.5l-1 1L12 9l4-4.5-1-1L12 7l-1.5-1.5zM8 13.7A5.71 5.71 0 0 1 2.3 8c0-3.14 2.56-5.7 5.7-5.7 1.83 0 3.45.88 4.5 2.2l.92-.92A6.947 6.947 0 0 0 8 1C4.14 1 1 4.14 1 8s3.14 7 7 7 7-3.14 7-7l-1.52 1.52c-.66 2.41-2.86 4.19-5.48 4.19v-.01z"></path></svg>
+                      </span>
+                    </div>
+                    <div class="col-sm-11 col-xs-10 noPadLeft">
+                      <div class="issue-description">
+                        <a [routerLink]="['/show-issue', issue.id]" class="issue-text dark-text">
+                        {{issue.title}}
+                        </a>
+                        <div class="small-text">
+                          #{{issue.id}} opened on {{issue.createdDate}} at {{issue.createdTime}} by {{issue.author}}
+                        </div>
+                      </div>
+                      
+                      
+                    </div>
+                    
+                  </div>
+                </li>
+              
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

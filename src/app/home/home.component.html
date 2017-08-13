@@ -1,0 +1,14 @@
+﻿<app-top-navbar></app-top-navbar>
+
+<!--Repository Information-->
+
+<app-repo-info></app-repo-info>
+
+<!--Filter Section -->
+<app-filter-section (filter-item)="filterIssues($event)"></app-filter-section>
+
+<!--issues list is contained inside this-->
+<app-issues [issues]="pagedPosts" [filterValue]="filterValue"></app-issues>
+    
+<!--issue-list-pagination-->
+<app-pagination [items]="posts"	[pageSize]="pageSize" (page-changed)="changePage($event)"></app-pagination>

@@ -1,0 +1,191 @@
+<!--Top Black Navbar-->
+<app-top-navbar></app-top-navbar>
+
+<!--Repository Information-->
+<app-repo-info></app-repo-info>
+
+
+<!--Show Issues
+    ps- Can be refactored into smaller components but ran out of time for submission-->
+
+<div *ngIf="currentIssue" class="container"> 
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="show-issue">
+                <div class="show-issue-header">
+                    <div class="show-issue-title">
+                        <span class="issue-title">
+                            {{currentIssue?.title}}
+                        </span> 
+                        <span class="issue-number">
+                            #{{currentIssue?.id}}
+                        </span>
+                    </div>
+                    <a class="btn btn-sm btn-primary" [routerLink]="['/new-issue']" >New Issue</a>
+                </div>
+                <div class="issue-meta-data">
+
+                    <button *ngIf="currentIssue.status === 'open'" type="submit" class="btn issue-status btn-sm btn-primary"><svg aria-hidden="true" class="btn-icon" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg>
+                     Open</button>
+                     <button *ngIf="currentIssue.status === 'closed'" class="btn issue-status btn-sm btn-danger"><svg aria-hidden="true" class="btn-icon" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M7 10h2v2H7v-2zm2-6H7v5h2V4zm1.5 1.5l-1 1L12 9l4-4.5-1-1L12 7l-1.5-1.5zM8 13.7A5.71 5.71 0 0 1 2.3 8c0-3.14 2.56-5.7 5.7-5.7 1.83 0 3.45.88 4.5 2.2l.92-.92A6.947 6.947 0 0 0 8 1C4.14 1 1 4.14 1 8s3.14 7 7 7 7-3.14 7-7l-1.52 1.52c-.66 2.41-2.86 4.19-5.48 4.19v-.01z"></path></svg>Closed</button>
+                    <div class="issue-meta-data-info">
+                        <span class="author">
+                            <!-- ? MARK - for handling null variable -->
+                            {{currentIssue?.author}}
+                        </span>
+                        <span>
+                            opened this issue on
+                        </span>
+                        <span class="issue-date">
+                            {{currentIssue?.createdDate}}
+                        </span>
+                        <span class="issue-time">
+                            at {{currentIssue?.createdTime}}
+                        </span> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="currentIssue" class="show-issue-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 discuss-issues-container">
+                <div *ngFor="let timelineItem of currentIssue?.timeline">
+                    <div *ngIf="IfInstanceOfComment(timelineItem)" class="row">
+                    <div  class="col-sm-2 col-xs-2 noPadRight avatar-holder">
+                        <span class="issuer-avatar">
+                            <span alt="@amal1994" class="timeline-comment-avatar"></span>
+                        </span>
+                    </div>
+                    <div class="col-sm-10 col-xs-10 noPadLeft">
+                        <div class="issue-timeline-container">
+                            <div class="issue-timeline-comment">
+                                
+                                <div class="issue-timeline-comment-header">
+                                    <span class="issue-timeline-comment-header-text">{{timelineItem.commentAuthor}} commented on {{timelineItem.commentCreatedDate}} at {{timelineItem.commentCreatedTime}}</span>
+                                </div>
+                                
+                                <div class="issue-timeline-comment-text">
+                                    {{timelineItem.commentContent}}
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+                <ul  class="comment-logs">
+                    <li *ngIf="!IfInstanceOfComment(timelineItem)" class="comment-logs-item">
+                        <span *ngIf="timelineItem.logStatus==='closed'" class="comment-logs-icon closed">
+                            <svg aria-hidden="true" class="octicon octicon-circle-slash" height="16" version="1.1" viewBox="0 0 14 16" width="14"><path fill-rule="evenodd" d="M7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm0 1.3c1.3 0 2.5.44 3.47 1.17l-8 8A5.755 5.755 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zm0 11.41c-1.3 0-2.5-.44-3.47-1.17l8-8c.73.97 1.17 2.17 1.17 3.47 0 3.14-2.56 5.7-5.7 5.7z"></path></svg>
+                        </span>
+                        <span *ngIf="timelineItem.logStatus==='open'" class="comment-logs-icon open">
+                            <svg aria-hidden="true" class="octicon octicon-primitive-dot" height="16" version="1.1" viewBox="0 0 8 16" width="8"><path fill-rule="evenodd" d="M0 8c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4z"></path></svg>
+                        </span>
+                        <span class="comment-logs-description">
+                            <span class="comment-log-author">{{timelineItem.logAuthor}}</span>
+                            <span *ngIf="timelineItem.logStatus==='closed'">closed</span>
+                            <span *ngIf="timelineItem.logStatus==='open'">reopened</span> 
+                            this issue on {{timelineItem.logCreatedDate}} at {{timelineItem.logCreatedTime}}
+                        </span>
+                    </li>
+                </ul>
+                </div>
+                
+
+                 
+                
+                <div class="new-comment-form">
+                    <div class="row">
+                        <div class="col-sm-2 col-xs-2 noPadRight avatar-holder">
+                            <span class="issuer-avatar">
+                                <img alt="@amal1994" class="timeline-comment-avatar" height="44" src="https://avatars0.githubusercontent.com/u/6974242?v=4&amp;s=88" width="44">
+                            </span>
+                            
+                        </div>
+                        <div class="col-sm-10 col-xs-10 noPadLeft">
+                            <div class="issue-timeline-container">
+                                <div class="issue-timeline-comment">
+                                
+                                <div class="issue-timeline-comment-header">
+                                    <span class="issue-timeline-comment-header-text">Comment on issue above</span>
+                                </div>
+                                
+                                <form [formGroup]='commentForm'>
+                                    <div class="issue-comment">
+                                        
+                                        <div class="form-group">
+                                            <textarea formControlName='issueComment' placeholder="Leave a comment" name="" id=""  rows="10" class="form-control"></textarea>
+                                        </div>
+                                        
+                                        <div class="form-group text-right">
+                                            <button (click)="closeIssue()" 
+                                            *ngIf="currentIssue.author === currentUser && currentIssue.status==='open'" 
+                                            class="btn btn-default">Close Issue</button>
+                                            <button (click)="reopenIssue()" 
+                                            *ngIf="currentIssue.author === currentUser && currentIssue.status==='closed'" 
+                                            class="btn btn-default">Reopen Issue</button>
+                                            <button (click)="pushComment()" [disabled]="!commentForm.valid" class="btn btn-primary">Comment</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+                
+                
+            </div>
+        
+            
+            <div class="col-sm-3">
+                <div class="issue-sidebar">
+                    <ul class="issue-sidebar-list">
+                        <li class="issue-sidebar-list-item">
+                            <div class="issue-sidebar-list-item-heading">
+                                Assignees
+                            </div>
+                            <div class="issue-sidebar-list-item-text">
+                                No one assigned
+                            </div>
+                        </li>
+                        <li class="issue-sidebar-list-item">
+                            <div class="issue-sidebar-list-item-heading">
+                                Labels
+                            </div>
+                            <div class="issue-sidebar-list-item-text">
+                                None yet
+                            </div>
+                        </li>
+                        <li class="issue-sidebar-list-item">
+                            <div class="issue-sidebar-list-item-heading">
+                                Projects
+                            </div>
+                            <div class="issue-sidebar-list-item-text">
+                                None yet
+                            </div>
+                        </li>
+                        <li class="issue-sidebar-list-item">
+                            <div class="issue-sidebar-list-item-heading">
+                                Milestone
+                            </div>
+                            <div class="issue-sidebar-list-item-text">
+                                No milestone
+                            </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+
